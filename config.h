@@ -6,8 +6,8 @@ static const Gap default_gap        = {.isgap = 1, .realgap = 1, .gappx = 1};
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static char font[]            = "monospace:size=10";
-static char dmenufont[]       = "monospace:size=10";
+static char font[]            = "FiraCode Nerd Font Mono:size=12";
+static char dmenufont[]       = "FiraCode Nerd Font Mono:size=12";
 
 
 static const char *fonts[]          = { font };
@@ -32,11 +32,11 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor    scratch key */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1,        0  },
-	{ "firefox",  NULL,       NULL,       1 << 8,       0,           -1,        0  },
-	{ NULL,       NULL,   "scratchpad",   0,            1,           -1,       's' },
+	// { "Gimp",     NULL,       NULL,       0,            1,           -1,        0  },
+	// { "firefox",  NULL,       NULL,       1 << 8,       0,           -1,        0  },
+	// { NULL,       NULL,   "scratchpad",   0,            1,           -1,       's' },
 	{ NULL,       NULL,   "dScratch",     0,            1,           -1,       'e' },
-	{ NULL,       NULL,   "mScratch",     0,            1,           -1,       'm' },
+	// { NULL,       NULL,   "mScratch",     0,            1,           -1,       'm' },
 };
 
 /* layout(s) */
@@ -69,7 +69,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-b", "-fn", dmen
 static const char *termcmd[]  = { "st", NULL };
 
 /*First arg only serves to match against key in rules*/
-static const char *scratchpadcmd[] = {"s", "st", "-t", "scratchpad", NULL};
+// static const char *scratchpadcmd[] = {"s", "st", "-t", "scratchpad", NULL};
 static const char *dailySessionScratch[] = {"e", "st", "-t", "dScratch", "-g", "120x34",  NULL};
 // static const char *ManScratch[] = {"m", "st", "-t", "mScratch", "-g", "120x34", "-e", "nvim -S ~/manpages.vim",  NULL};
 
@@ -101,7 +101,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
     { MODKEY|ControlMask,           XK_space,  focusmaster,    {0} },
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
@@ -114,17 +114,21 @@ static Key keys[] = {
     { MODKEY,                       XK_e,      togglescratch,  {.v = dailySessionScratch } },
 	{ MODKEY,                       XK_l,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_i,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_H,      setmfact,       {.f = -0.05} },
-	{ MODKEY|ShiftMask,             XK_L,      setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,                       XK_y,      incnmaster,     {.i = +1 } },
+	{ MODKEY|ShiftMask,                       XK_o,      incnmaster,     {.i = -1 } },
+
+    { MODKEY,                       XK_n,      shiftview,  { .i = +1 } },
+	{ MODKEY,                       XK_p,      shiftview,  { .i = -1 } },
+
+	{ MODKEY|ShiftMask,             XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY|ShiftMask,             XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,             		    XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_s,      setlayout,      {0} },
+	// { MODKEY,                       XK_s,      setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
