@@ -114,11 +114,11 @@ static Key keys[] = {
     { MODKEY,                       XK_e,      togglescratch,  {.v = dailySessionScratch } },
 	{ MODKEY,                       XK_l,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_i,      focusstack,     {.i = -1 } },
-	{ MODKEY|ShiftMask,                       XK_y,      incnmaster,     {.i = +1 } },
-	{ MODKEY|ShiftMask,                       XK_o,      incnmaster,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_y,      incnmaster,     {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_o,      incnmaster,     {.i = -1 } },
 
-    { MODKEY,                       XK_n,      shiftview,  { .i = +1 } },
-	{ MODKEY,                       XK_p,      shiftview,  { .i = -1 } },
+    { MODKEY,                       XK_n,      shiftview,      { .i = +1 } },
+	{ MODKEY,                       XK_p,      shiftview,      { .i = -1 } },
 
 	{ MODKEY|ShiftMask,             XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_l,      setmfact,       {.f = +0.05} },
